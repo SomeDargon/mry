@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans      http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
+<!--
+    <mvc:resources mapping="/app/api/**" location="/dist/" />
+-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/app/api/**"/>
+            <mvc:exclude-mapping path="/app/api/common/**"/>
+            <mvc:exclude-mapping path="/app/api/admin/**"/>
+            <bean class="com.mry.resources.interceptor.AppSecurityInterceptor">
+                <property name="excludedUrls">
+                    <set>
+                        <value>/app/api/account/guardianinfo</value>
+                        <value>/app/api/account/register</value>
+                        <value>/app/api/account/login</value>
+                        <value>/app/api/account/forgot/password</value>
+                        <value>/app/api/doctor/login</value>
+                        <value>/app/api/role</value>
+                        <value>/app/api/account</value>
+                        <value>/app/api/user</value>
+                        <value>/app/api/group</value>
+                        <value>/app/api/store</value>
+                        <value>/app/api/customer</value>
+                        <value>/app/api/project</value>
+                        <value>/app/api/service</value>
+                        <value>/app/api/pay</value>
+                        <value>/app/api/report</value>
+                    </set>
+                </property>
+            </bean>
+        </mvc:interceptor>
+
+
+    </mvc:interceptors>
+    <bean class="com.mry.util.RestApiConfig"/>
+
+    <!--Swagger资源重定向(仅作为后台使用不提供静态资源) -->
+    <mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"/>
+    <mvc:resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"/>
+
+
+</beans>

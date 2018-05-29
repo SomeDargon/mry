@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+			 xmlns="http://java.sun.com/xml/ns/persistence">
+
+	<persistence-unit name="persistence.mry"
+					  transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+
+
+	<!--		<property name="hibernate.connection.url"
+					  value="jdbc:mysql://121.42.142.228:3306/mry?useUnicode=true&amp;characterEncoding=UTF-8" />
+
+			<property name="hibernate.connection.username" value="youyi" />
+			<property name="hibernate.connection.password" value="youyi" />-->
+
+
+		<property name="hibernate.connection.url"
+                          value="jdbc:mysql://116.62.201.135:3306/mry?useUnicode=true&amp;characterEncoding=UTF-8" />
+
+                <property name="hibernate.connection.username" value="root" />
+                <property name="hibernate.connection.password" value="41e7ea6a3a" />
+
+
+			<property name="hibernate.dialect" value="com.mry.entity.helper.CustomMysqlDialect" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"
+				/> -->
+
+
+			<property name="hibernate.max_fetch_depth" value="4" />
+			<property name="hibernate.show_sql" value="true" />
+
+			<property name="hibernate.connection.provider_class"
+					  value="org.hibernate.c3p0.internal.C3P0ConnectionProvider" />
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="50" />
+			<property name="hibernate.c3p0.timeout" value="60" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="120" />
+			<property name="hibernate.c3p0.preferredTestQuery" value="select 1" />
+			<property name="hibernate.c3p0.acquire_increment" value="1" />
+			<property name="hibernate.c3p0.validate" value="false" />
+			<property name="hibernate.c3p0.testConnectionOnCheckout" value="true" />
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+
+			<property name="hibernate.cache.use_second_level_cache"
+					  value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.cache.region.factory_class"
+					  value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
+			<property name="net.sf.ehcache.configurationResourceName"
+					  value="ehcache.xml" />
+
+		</properties>
+	</persistence-unit>
+</persistence>
